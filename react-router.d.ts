@@ -5,7 +5,7 @@ import {LocationDescriptor, Query, Location, History, HistoryOptions, CreateHist
 
 declare module ReactRouter {
 
-	type RouteConfig = React.ReactElement | React.ReactNode | PlainRoute | PlainRoute[];
+	type RouteConfig = React.ReactElement<any> | React.ReactNode | PlainRoute | PlainRoute[];
 
 	type ReactComponent<IProps> = React.Component<IProps, any> | React.StatelessComponent<IProps> | React.ClassicComponent<IProps, any>;
 
@@ -731,9 +731,6 @@ interface MatchArgs {
   routes?: RouteConfig;
   history?: History;
   location?: Location | string;
-  parseQueryString?: ParseQueryString;
-  stringifyQuery?: StringifyQuery;
-  basename?: string;
 }
 
 	/**
