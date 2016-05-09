@@ -1,7 +1,7 @@
 /// <reference path="typings/main.d.ts" />
 
 import * as React from "react";
-import {LocationDescriptor, Query, QueryString, Location, History, HistoryOptions, CreateHistory, BasenameOptions, QueryOptions} from "history";
+import {LocationDescriptor, Query, Location, History, HistoryOptions, CreateHistory, BasenameOptions, QueryOptions} from "history";
 
 declare module ReactRouter {
 
@@ -10,10 +10,6 @@ declare module ReactRouter {
 	type ReactComponent<IProps> = React.Component<IProps, any> | React.StatelessComponent<IProps> | React.ClassicComponent<IProps, any>;
 
 	type Params = { [paramName: string]: any };
-
-  type ParseQueryString = (querySTring: QueryString) => Query;
-
-  type StringifyQuery = (queryObject: Query) => QueryString;
 
 	//Components
 	export interface IRouterProps {
