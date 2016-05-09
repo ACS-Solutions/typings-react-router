@@ -5,7 +5,7 @@ import {LocationDescriptor, Query, QueryString, Location, History, HistoryOption
 
 declare module ReactRouter {
 
-	type RouteConfig = Route | PlainRoute;
+	type RouteConfig = React.ReactNode | PlainRoute | PlainRoute[];Route
 
 	type ReactComponent<IProps> = React.Component<IProps, any> | React.StatelessComponent<IProps> | React.ClassicComponent<IProps, any>;
 
