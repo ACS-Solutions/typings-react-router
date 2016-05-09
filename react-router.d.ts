@@ -1,7 +1,7 @@
 /// <reference path="typings/main.d.ts" />
 
 import * as React from "react";
-import {LocationDescriptor, Query, Location, History, HistoryOptions, CreateHistory, BasenameOptions, QueryOptions} from "history";
+import {LocationDescriptor, Query, QueryString, Location, History, HistoryOptions, CreateHistory, BasenameOptions, QueryOptions} from "history";
 
 declare module ReactRouter {
 
@@ -10,6 +10,10 @@ declare module ReactRouter {
 	type ReactComponent<IProps> = React.Component<IProps, any> | React.StatelessComponent<IProps> | React.ClassicComponent<IProps, any>;
 
 	type Params = { [paramName: string]: any };
+
+  type ParseQueryString = (querySTring: QueryString) => Query;
+
+  type StringifyQuery = (queryObject: Query) => QueryString;
 
 	//Components
 	export interface IRouterProps {
@@ -727,6 +731,14 @@ declare module ReactRouter {
 		history?: History;
 	}
 
+interface MatchArgs {
+  routes?: RouteConfig;
+  history?: History;
+  localtion?: Location | string;
+  parseQueryString?: ParseQueryString;
+  stringifyQuery: StringifyQuery;
+  basename?: string;
+}
 
 	/**
 	 * This function is to be used for server-side rendering. It matches a set of routes to a location, without rendering, and calls a callback(error, redirectLocation, renderProps) when it's done.
@@ -748,7 +760,7 @@ declare module ReactRouter {
 	 * @param {routes: RouteConfig}
 	 * @param {(error:Error, redirectLocation:Location, renderProps : Object) => void} callback
 	 */
-	export function match({routes: RouteConfig}, callback: (error: Error, redirectLocation: Location, renderProps: Object) => void): void;
+	export function match(args: MatchArgs, callback: (error: Error, redirectLocation: Location, renderProps: Object) => void): void;
 
 	/**
 	 * Creates and returns an array of routes from the given object which may be a JSX route, a plain object route, or an array of either.
