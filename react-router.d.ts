@@ -736,7 +736,7 @@ interface MatchArgs {
   history?: History;
   location?: Location | string;
   parseQueryString?: ParseQueryString;
-  stringifyQuery: StringifyQuery;
+  stringifyQuery?: StringifyQuery;
   basename?: string;
 }
 
